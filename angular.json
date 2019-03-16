@@ -135,5 +135,8 @@
       }
     }
   },
-  "defaultProject": "LM-Assignment"
+  "defaultProject": "LM-Assignment",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }
