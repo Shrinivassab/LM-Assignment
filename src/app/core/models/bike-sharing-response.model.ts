@@ -9,7 +9,7 @@ export class BikeSharingData {
   id: string;
   location: LocationDetails;
   name: string;
-  stations: []
+  stations: StationDetails[];
 }
 
 export class LocationDetails {
@@ -17,4 +17,23 @@ export class LocationDetails {
   contry: string;
   latitude: number;
   longtitude: number;
+}
+
+export class StationDetails {
+  empty_slots: number;
+  extra: AdditionalDetails;
+  free_bikes: number;
+  id: number;
+  latitude: number;
+  longitude: number;
+  name: string;
+  timestamp: string;
+}
+
+export class AdditionalDetails {
+  address: null;
+  last_updated: number;
+  renting: number;
+  returning: number;
+  uid: string;
 }
