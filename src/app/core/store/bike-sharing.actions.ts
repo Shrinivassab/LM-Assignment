@@ -2,6 +2,8 @@ import { Action } from '@ngrx/store';
 
 export enum BikeSharingActionTypes {
   LoadBikeSharings = '[BikeSharing] Load BikeSharings',
+  LoadBikeSharingsSuccess = '[BikeSharing] Load BikeSharings Success',
+  LoadBikeSharingsError = '[BikeSharing] Load BikeSharings Error'
   
   
 }
