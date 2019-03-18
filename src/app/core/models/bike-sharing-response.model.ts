@@ -1,5 +1,5 @@
 export class BikeSharingResponse {
-  network: BikeSharingData[];
+  network: BikeSharingData;
 }
 
 export class BikeSharingData {

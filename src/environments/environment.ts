@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  webApi: 'https://api.citybik.es/v2/networks/blue-bikes'
+  webApi: 'https://api.citybik.es/v2/networks'
 };
 
 /*

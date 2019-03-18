@@ -1,23 +1,33 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 
-import { concatMap } from 'rxjs/operators';
-import { EMPTY } from 'rxjs';
-import { BikeSharingActionTypes, BikeSharingActions } from './bike-sharing.actions';
+import { catchError, map, switchMap } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import {
+  BikeSharingActions,
+  BikeSharingActionTypes,
+  LoadBikeSharing,
+  LoadBikeSharingError,
+  LoadBikeSharingSuccess
+} from './bike-sharing.actions';
+import { BikeSharingService } from '../http-services/bike-sharing.service';
+import { Action } from '@ngrx/store';
+import { BikeSharingResponse } from '../models/bike-sharing-response.model';
 
-
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class BikeSharingEffects {
-
-
   @Effect()
-  loadBikeSharings$ = this.actions$.pipe(
-    ofType(BikeSharingActionTypes.LoadBikeSharings),
-    /** An EMPTY observable only emits completion. Replace with your own observable API request */
-    concatMap(() => EMPTY)
+  getBikeSharingData$: Observable<Action> = this.actions$.pipe(
+    ofType<LoadBikeSharing>(BikeSharingActionTypes.LoadBikeSharing),
+    switchMap(() => this.service.getCityBikeData().pipe(
+      map((response: BikeSharingResponse) => new LoadBikeSharingSuccess({bikeNetwork: response})),
+      // catchError(error => of(new LoadBikeSharingError({error})))
+    ))
   );
 
-
-  constructor(private actions$: Actions<BikeSharingActions>) {}
+  constructor(private actions$: Actions<BikeSharingActions>, private service: BikeSharingService) {
+  }
 
 }

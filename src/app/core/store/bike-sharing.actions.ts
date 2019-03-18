@@ -1,16 +1,27 @@
 import { Action } from '@ngrx/store';
 
+import { BikeSharingResponse } from '../models/bike-sharing-response.model';
+
 export enum BikeSharingActionTypes {
-  LoadBikeSharings = '[BikeSharing] Load BikeSharings',
-  LoadBikeSharingsSuccess = '[BikeSharing] Load BikeSharings Success',
-  LoadBikeSharingsError = '[BikeSharing] Load BikeSharings Error'
-  
-  
+  LoadBikeSharing = '[BikeSharing] Load BikeSharing',
+  LoadBikeSharingSuccess = '[BikeSharing] Load BikeSharing Success',
+  LoadBikeSharingError = '[BikeSharing] Load BikeSharing Error'
 }
 
-export class LoadBikeSharings implements Action {
-  readonly type = BikeSharingActionTypes.LoadBikeSharings;
+export class LoadBikeSharing implements Action {
+  readonly type = BikeSharingActionTypes.LoadBikeSharing;
+}
+
+export class LoadBikeSharingSuccess implements Action {
+  readonly type = BikeSharingActionTypes.LoadBikeSharingSuccess;
+
+  constructor(public payload: { bikeNetwork: BikeSharingResponse }) {}
+}
+
+export class LoadBikeSharingError implements Action {
+  readonly type = BikeSharingActionTypes.LoadBikeSharingError;
+  constructor(public payload: {error: any}) {}
 }
 
 
-export type BikeSharingActions = LoadBikeSharings;
+export type BikeSharingActions = LoadBikeSharing | LoadBikeSharingSuccess | LoadBikeSharingError;
