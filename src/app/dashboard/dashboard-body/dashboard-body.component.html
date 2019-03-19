@@ -13,7 +13,7 @@
                    (keyup)="dv.filter($event.target.value)">
           </div>
         </div>
-        <div class="ui-g-6 ui-md-4" style="text-align:right">
+        <div class="ui-g-6 ui-md-4 data-view">
           <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
         </div>
       </div>
@@ -21,7 +21,7 @@
   </p-header>
   <ng-template let-station pTemplate="listItem">
     <div style="padding:.5em" class="ui-g-12 ui-md-3">
-      <p-panel [header]="station.name" [style]="{'text-align':'center'}">
+      <p-panel [header]="station.name" class="panel-header">
         <div class="ui-g ui-md ui-sm">
           <div class="ui-md-6 ui-sm-6 ui-size">
             {{station.free_bikes}}
@@ -39,7 +39,7 @@
   </ng-template>
   <ng-template let-station pTemplate="gridItem">
     <div style="padding:.5em" class="ui-g-12 ui-md-3">
-      <p-panel [header]="station.name" [style]="{'text-align':'center'}">
+      <p-panel [header]="station.name" class="panel-header">
         <div class="ui-g ui-md ui-sm">
           <div class="ui-md-6 ui-sm-6 ui-size">
             {{station.free_bikes}}
