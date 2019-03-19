@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard-top-bar.component.scss']
 })
 export class DashboardTopBarComponent implements OnInit {
-
+  title = 'Hubway';
   constructor() { }
 
   ngOnInit() {

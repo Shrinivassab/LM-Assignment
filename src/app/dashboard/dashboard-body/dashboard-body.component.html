@@ -1,3 +1,58 @@
-<p>
-  {{loadBikeData$ | async}}
-</p>
+<p-dataView #dv [value]="stationDetails" [paginator]="true" [rows]="12" [sortField]="sortField" [sortOrder]="sortOrder"
+            filterBy="name">
+  <p-header>
+    <div class="ui-helper-clearfix">
+      <div class="ui-g">
+        <div class="ui-g-12 ui-md-4">
+          <p-dropdown class="dropdown-style" [options]="sortOptions" [(ngModel)]="sortKey" placeholder="Sort By"
+                      (onChange)="onSortChange($event)"></p-dropdown>
+        </div>
+        <div class="ui-g-6 ui-md-4">
+          <div class="style-search">
+            <input type="search" pInputText placeholder="Search by station name"
+                   (keyup)="dv.filter($event.target.value)">
+          </div>
+        </div>
+        <div class="ui-g-6 ui-md-4" style="text-align:right">
+          <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+        </div>
+      </div>
+    </div>
+  </p-header>
+  <ng-template let-station pTemplate="listItem">
+    <div style="padding:.5em" class="ui-g-12 ui-md-3">
+      <p-panel [header]="station.name" [style]="{'text-align':'center'}">
+        <div class="ui-g ui-md ui-sm">
+          <div class="ui-md-6 ui-sm-6 ui-size">
+            {{station.free_bikes}}
+            <div class="ui-label">FREE BIKES</div>
+          </div>
+          <div class="ui-md-6 ui-sm-6 ui-size">
+            {{station.empty_slots}}
+            <div class="ui-label">EMPTY SLOTS</div>
+          </div>
+        </div>
+        <hr class="ui-widget-content" style="border-top:0">
+        <div>{{station.timestamp}}</div>
+      </p-panel>
+    </div>
+  </ng-template>
+  <ng-template let-station pTemplate="gridItem">
+    <div style="padding:.5em" class="ui-g-12 ui-md-3">
+      <p-panel [header]="station.name" [style]="{'text-align':'center'}">
+        <div class="ui-g ui-md ui-sm">
+          <div class="ui-md-6 ui-sm-6 ui-size">
+            {{station.free_bikes}}
+            <div class="ui-label">FREE BIKES</div>
+          </div>
+          <div class="ui-md-6 ui-sm-6 ui-size">
+            {{station.empty_slots}}
+            <div class="ui-label">EMPTY SLOTS</div>
+          </div>
+        </div>
+        <hr class="ui-widget-content" style="border-top:0">
+        <div>{{station.timestamp}}</div>
+      </p-panel>
+    </div>
+  </ng-template>
+</p-dataView>
